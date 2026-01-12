@@ -3,12 +3,26 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 4rem 1.5rem;
+  color: #3a3a3a;
+}
+
+.page hr{
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Icons */
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.2rem;
+  vertical-align: middle;
+  fill: currentColor;
 }
 
 /* Main Section */
 .main {
   padding: 6rem 0 5rem;
-  border-bottom: 1px solid #e5e7eb;
 }
 
 .main h1 {
@@ -21,6 +35,7 @@
   font-size: 1.75rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
+  color: darkturquoise;
 }
 
 .main p {
@@ -35,12 +50,8 @@
 
 /* Sections */
 .section {
-  padding: 4rem 0;
+  padding: 3rem 0;
   /* max-width: 800px; */
-}
-
-.section:not(:last-child) {
-  border-bottom: 1px solid #f1f5f9;
 }
 
 /* Headings */
@@ -84,9 +95,32 @@
 
 .section .founder-title {
   font-weight: 500;
-  color: #4b5563;
   margin-bottom: 1rem;
 }
+
+/* Founder Links */
+.founder-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.founder-links a {
+  color: #3a3a3a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.founder-links a:hover {
+  text-decoration: underline;
+}
+
+.divider-dot {
+  color: #9ca3af;
+}
+
 
 /* Responsive */
 /* reduces font size on pages smaller than 768px wide */
@@ -113,7 +147,7 @@
 }
 
 .get-started button {
-  background-color: #111827;
+  background-color: darkturquoise;
   color: #ffffff;
   border: none;
   padding: 0.9rem 1.5rem;
@@ -129,7 +163,7 @@
 .get-started button:hover {
   transform: translateY(-1px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
-  background-color: #000000;
+  background-color: rgb(0, 193, 196);
 }
 
 .get-started button:active {

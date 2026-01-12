@@ -1,7 +1,13 @@
 import React from 'react'
 import "./styles.css"
+import { useNavigate } from 'react-router-dom'
+import linkedinIcon from "../../assets/icons/linkedin.svg";
+import emailIcon from "../../assets/icons/envelope.svg";
+
 
 function LandingPage() {
+    const navigate = useNavigate()
+
     return (
         <div className="page">
             {/* Main */}
@@ -14,6 +20,7 @@ function LandingPage() {
                     <strong>Let's Co-Innovate the future!</strong>
                 </p>
             </div>
+            <hr />
 
             {/* Who Are We */}
             <div className="section">
@@ -41,6 +48,7 @@ function LandingPage() {
                     hackathons, we help you cut the complexity and create clarity.
                 </p>
             </div>
+            <hr />
 
             {/* How We Help */}
             <div className="section">
@@ -54,6 +62,7 @@ function LandingPage() {
                     structure to make innovation a sustaining business competency.
                 </p>
             </div>
+            <hr />
 
             {/* What We Offer */}
             <div className="section">
@@ -121,6 +130,7 @@ function LandingPage() {
                     continual innovation capacity development.
                 </p>
             </div>
+            <hr />
 
             {/* How We Engage */}
             <div className="section">
@@ -138,15 +148,31 @@ function LandingPage() {
                     </li>
                 </ul>
             </div>
+            <hr />
 
             {/* Meet Your Co-Innovators */}
             <div className="section">
-                <h2>Meet Your Co-Innovators</h2>
+                <h2>Meet Your Co-Innovator</h2>
 
                 <p className="founder-name">Carrie Fanai, P.Eng.</p>
                 <p className="founder-title">
                     Founder and CEO, Co-Innovate Inc.
                 </p>
+
+                <div className="founder-links">
+                    <a
+                        href="https://www.linkedin.com/in/carriefanai"
+                        target="_blank"             // open in new tab
+                        rel="noopener noreferrer"   // good security practice
+                    >
+                        <img src={linkedinIcon} alt="LinkedIn" className="icon" />
+                    </a>
+                    {/* <span className="divider-dot">•</span> */}
+                    <a href="mailto:carrie@co-innovate.ca">
+                        <img src={emailIcon} alt="Email" className="icon" />
+                        {/* carrie@co-innovate.ca */}
+                    </a>
+                </div>
 
                 <p>
                     Carrie Fanai is an Innovation Coach and Strategy Consultant who helps
@@ -173,7 +199,7 @@ function LandingPage() {
 
             {/* Get Started Button */}
             <div className="get-started">
-                <button>Get Started</button>
+                <button onClick={() => navigate("/signup")}>Get Started</button>
             </div>
 
         </div>
