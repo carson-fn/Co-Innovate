@@ -3,7 +3,7 @@ type QuestionBase = {
   text: string;
 };
 
-type YesNoQuestion = QuestionBase & {
+export type YesNoQuestion = QuestionBase & {
   type: "yes_no";
   next: {
     yes: string;
@@ -11,13 +11,13 @@ type YesNoQuestion = QuestionBase & {
   };
 };
 
-type MultipleChoiceQuestion = QuestionBase & {
+export type MultipleChoiceQuestion = QuestionBase & {
   type: "multiple_choice";
   options: { value: string; label: string }[];
   next: string | Record<string, string>;
 };
 
-type TextQuestion = QuestionBase & {
+export type TextQuestion = QuestionBase & {
   type: "text";
   next: string;
 };
@@ -36,3 +36,5 @@ export type StartingPoint = {
 export type StartingPointKey = "culture" | "portfolio" | "project";
 
 export type StartingPointsMap = Record<StartingPointKey, StartingPoint>;
+
+export type OnAnswerFunction = (answer: string) => void;

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Question } from '../../types'
+// import the type under a different name so it doesnt conflict with the component name
+import { YesNoQuestion as YNQType, OnAnswerFunction } from '../../types'
 
-function YesNoQuestion({ question, onAnswer }: { question: Question, onAnswer: (answer: string) => void }) {
+function YesNoQuestion({ question, onAnswer }: { question: YNQType, onAnswer: OnAnswerFunction }) {
   return (
     <div>
         <h3>{question.text}</h3>

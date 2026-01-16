@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
+import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
 import startingPointsImport from '../data/startingPoints.json';
 import questions from '../data/questions.json';
 
@@ -17,7 +17,7 @@ export function useQuestionnaire() {
     const currentQuestion: Question = questions[currentQuestionId as keyof typeof questions] as Question;
 
     // Handle answering the question (passed down as a prop)
-    function answerCurrentQuestion(answer: string): void {
+    const answerCurrentQuestion: OnAnswerFunction = (answer: string): void => {
         if (!currentQuestion) {
             throw new Error('No current question');
         }
