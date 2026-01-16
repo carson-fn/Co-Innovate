@@ -1,13 +1,18 @@
-import React from 'react'
-import QuestionRenderer from './components/QuestionRenderer'
-import { Question } from './types'
+import React, { use } from 'react'
 
+import QuestionRenderer from './components/QuestionRenderer'
+import { useQuestionnaire } from './hooks/useQuestionnaire';
+
+import { Question } from './types'
 import questions from './data/questions.json'
 
+
 function QuestionnairePage() {
+  const questionnaire = useQuestionnaire();
+
   return (
     <div>
-        <QuestionRenderer question={questions["portfolio_1"] as Question} />
+        <QuestionRenderer question={questionnaire.currentQuestion} onAnswer={questionnaire.answerCurrentQuestion} />
     </div>
   )
 }

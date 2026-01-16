@@ -26,3 +26,13 @@ export type Question =
   | YesNoQuestion
   | MultipleChoiceQuestion
   | TextQuestion;
+
+
+export type StartingPoint = {
+  text: string;
+  startQuestionId: string;
+};
+
+export type StartingPointKey = "culture" | "portfolio" | "project";
+
+export type StartingPointsMap = Record<StartingPointKey, StartingPoint>;

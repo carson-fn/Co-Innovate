@@ -1,5 +1,4 @@
 {
-  "startingPoints": {
     "culture": {
       "text": "I want to build an innovative culture",
       "startQuestionId": "culture_1"
@@ -12,5 +11,4 @@
       "text": "I have an innovative idea or project",
       "startQuestionId": "project_1"
     }
-  }
 }
