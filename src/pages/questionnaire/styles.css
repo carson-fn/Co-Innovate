@@ -33,25 +33,26 @@
 }
 
 .answer-button:hover {
-  background-color: #f9fafb;
+  background-color: rgb(189, 242, 243);
   border-color: #b8c0cc;
 }
 
 .answer-button:active {
-  background-color: #f1f3f5;
+  background-color: darkturquoise;
 }
 
 /* Text input */
 .text-input {
   width: 100%;
   padding: 1rem;
+  margin-bottom: 1rem;
   font-size: 1rem;
   border-radius: 6px;
   border: 1px solid #d0d5dd;
 }
 
-.text-input:focus {
+/* .text-input:focus {
   outline: none;
-  border-color: #111;
-}
+  border: 2px solid darkturquoise;
+} */
 
