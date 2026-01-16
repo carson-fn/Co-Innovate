@@ -5,9 +5,11 @@ import { YesNoQuestion as YNQType, OnAnswerFunction } from '../../types'
 function YesNoQuestion({ question, onAnswer }: { question: YNQType, onAnswer: OnAnswerFunction }) {
   return (
     <div>
-        <h3>{question.text}</h3>
-        <button onClick={() => onAnswer("yes")}>Yes</button>
-        <button onClick={() => onAnswer("no")}>No</button>
+      <h3 className="question-text">{question.text}</h3>
+      <div className="answer-group">
+        <button className="answer-button" onClick={() => onAnswer("yes")}>Yes</button>
+        <button className="answer-button" onClick={() => onAnswer("no")}>No</button>
+      </div>
     </div>
   )
 }

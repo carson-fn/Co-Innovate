@@ -6,12 +6,15 @@ function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAn
 
     return (
         <div>
-            <h3>{question.text}</h3>
+            <h3 className="question-text">{question.text}</h3>
+
             <input
-                type="text"
+                type="textbox"
+                className="text-input"
                 onChange={(e) => setAnswer(e.target.value)}
             ></input>
-            <button onClick={() => onAnswer(answer)}>Submit</button>
+            <button className="answer-button" onClick={() => onAnswer(answer)}>Submit</button>
+
         </div>
     )
 }
