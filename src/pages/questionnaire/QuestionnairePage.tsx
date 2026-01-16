@@ -1,14 +1,25 @@
 import React, { use } from 'react'
+import "./styles.css"
 
+import StartingPointSelector from './components/StartingPointSelector';
 import QuestionRenderer from './components/QuestionRenderer'
 import { useQuestionnaire } from './hooks/useQuestionnaire';
 
-import { Question } from './types'
+import { Question, StartingPointKey } from './types'
+
 import questions from './data/questions.json'
 
 
+
 function QuestionnairePage() {
-  const questionnaire = useQuestionnaire();
+  const [startingPointKey, setStartingPointKey] = React.useState<StartingPointKey | null>(null);
+
+  const questionnaire = useQuestionnaire(startingPointKey);
+
+  if (!startingPointKey || !questionnaire) {
+    return (<StartingPointSelector onSelect={(key: StartingPointKey) => setStartingPointKey(key)} />);
+  }
+
 
   return (
     <div>

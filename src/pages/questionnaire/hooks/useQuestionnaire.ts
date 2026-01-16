@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
 import startingPointsImport from '../data/startingPoints.json';
@@ -6,15 +6,28 @@ import questions from '../data/questions.json';
 
 const startingPoints = startingPointsImport as unknown as StartingPointsMap;
 
-export function useQuestionnaire() {
+export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
 
-    // Store answers
+    // Store answers and current question
     const [answers, setAnswers] = useState<Record<string, any>>({});
+    const [currentQuestionId, setCurrentQuestionId] = useState<string>("");
 
-    // Get starting point and starting question
-    const startingPointKey: StartingPointKey = "portfolio";
-    const [currentQuestionId, setCurrentQuestionId] = useState<string>(startingPoints[startingPointKey].startQuestionId);
+    // useEffect to update current question id when we get a starting point key
+    useEffect(() => {
+        if (!startingPointKey) { return; }
+        setCurrentQuestionId(startingPoints[startingPointKey].startQuestionId);
+    }, [startingPointKey]);
+    
+
+    // Derive current question
+    if (!startingPointKey) { return null };
+
     const currentQuestion: Question = questions[currentQuestionId as keyof typeof questions] as Question;
+    
+    if (!currentQuestion) { 
+        if (currentQuestionId) console.warn('No question found for id:', currentQuestionId);
+        return null; 
+    }
 
     // Handle answering the question (passed down as a prop)
     const answerCurrentQuestion: OnAnswerFunction = (answer: string): void => {

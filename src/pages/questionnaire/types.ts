@@ -29,6 +29,7 @@ export type Question =
 
 
 export type StartingPoint = {
+  id: StartingPointKey;
   text: string;
   startQuestionId: string;
 };
