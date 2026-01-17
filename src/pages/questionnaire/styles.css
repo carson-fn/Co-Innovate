@@ -2,7 +2,7 @@
 .question-container {
   max-width: 700px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 0rem;
 }
 
 /* Question text */
@@ -55,4 +55,27 @@
   outline: none;
   border: 2px solid darkturquoise;
 } */
+
+
+
+/* Progress bar */
+.progress-container {
+  margin: 3rem auto;
+  margin-bottom: 0;
+  max-width: 700px;
+  align-self: center;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #e4e7ec;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: darkturquoise;
+  transition: width 0.3s ease;
+}
 

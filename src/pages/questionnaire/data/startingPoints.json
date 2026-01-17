@@ -2,16 +2,19 @@
     "culture": {
       "id": "culture",
       "text": "I want to build an innovative culture",
-      "startQuestionId": "culture_1"
+      "startQuestionId": "culture_1",
+      "estimatedNumberOfQuestions": 3
     },
     "portfolio": {
       "id": "portfolio",
       "text": "I want to build an innovation portfolio",
-      "startQuestionId": "portfolio_1"
+      "startQuestionId": "portfolio_1",
+      "estimatedNumberOfQuestions": 3
     },
     "project": {
       "id": "project",
       "text": "I have an innovative idea or project",
-      "startQuestionId": "project_1"
+      "startQuestionId": "project_1",
+      "estimatedNumberOfQuestions": 3
     }
 }

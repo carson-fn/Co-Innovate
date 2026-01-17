@@ -12,21 +12,28 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("");
 
+    // Question history for progress bar and back button
+    const [questionHistory, setQuestionHistory] = useState<string[]>([]);
+
     // useEffect to update current question id when we get a starting point key
     useEffect(() => {
         if (!startingPointKey) { return; }
         setCurrentQuestionId(startingPoints[startingPointKey].startQuestionId);
     }, [startingPointKey]);
-    
+
 
     // Derive current question
     if (!startingPointKey) { return null };
 
     const currentQuestion: Question = questions[currentQuestionId as keyof typeof questions] as Question;
-    
-    if (!currentQuestion) { 
+
+    // Derive progress;
+    const totalSteps = startingPoints[startingPointKey].estimatedNumberOfQuestions;
+    const progress = Math.min(questionHistory.length / totalSteps, 1);
+
+    if (!currentQuestion) {
         if (currentQuestionId) console.warn('No question found for id:', currentQuestionId);
-        return null; 
+        return null;
     }
 
     // Handle answering the question (passed down as a prop)
@@ -40,6 +47,9 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
             ...prevAnswers,
             [currentQuestionId]: answer,
         }));
+
+        // Add to question history
+        setQuestionHistory(prevHistory => ([...prevHistory, currentQuestionId]));
 
         // Get next question id
         setCurrentQuestionId((prevQuestionId: string) => {
@@ -63,5 +73,6 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         currentQuestion,
         answerCurrentQuestion,
         answers,
+        progress
     }
 }

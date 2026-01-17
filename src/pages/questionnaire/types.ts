@@ -32,6 +32,7 @@ export type StartingPoint = {
   id: StartingPointKey;
   text: string;
   startQuestionId: string;
+  estimatedNumberOfQuestions: number;
 };
 
 export type StartingPointKey = "culture" | "portfolio" | "project";
