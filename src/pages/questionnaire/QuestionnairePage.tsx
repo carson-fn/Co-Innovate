@@ -16,21 +16,25 @@ import { Question, StartingPointKey } from './types'
 import questions from './data/questions.json'
 
 
-
 function QuestionnairePage() {
   const [startingPointKey, setStartingPointKey] = React.useState<StartingPointKey | null>(null);
 
   const questionnaire = useQuestionnaire(startingPointKey);
 
   if (!startingPointKey || !questionnaire) {
-    return (<StartingPointSelector onSelect={(key: StartingPointKey) => setStartingPointKey(key)} />);
+    return (
+      <div className="questionnaire-page">
+        <StartingPointSelector onSelect={(key: StartingPointKey) => setStartingPointKey(key)} />
+      </div>
+    );
   }
 
 
   return (
-    <div>
+    <div className="questionnaire-page">
       <ProgressBar progress={questionnaire.progress} />
       <QuestionRenderer question={questionnaire.currentQuestion} onAnswer={questionnaire.answerCurrentQuestion} />
+      <button className="back-button" onClick={questionnaire.backToPreviousQuestion}>Back</button>
     </div>
   )
 }

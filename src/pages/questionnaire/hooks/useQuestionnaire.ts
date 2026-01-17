@@ -68,10 +68,18 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         })
     }
 
+    const backToPreviousQuestion = (): void => {
+        setQuestionHistory((prevHistory) => {
+            const newHistory = [...prevHistory];
+            setCurrentQuestionId(newHistory.pop() ?? "");
+            return newHistory;
+        });
+    };
 
     return {
         currentQuestion,
         answerCurrentQuestion,
+        backToPreviousQuestion,
         answers,
         progress
     }
