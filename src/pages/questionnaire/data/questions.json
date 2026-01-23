@@ -25,6 +25,6 @@
       { "value": "pivoted", "label": "Pivoted" },
       { "value": "killed", "label": "Killed" }
     ],
-    "next": "portfolio_4"
+    "next": "end"
   }
 }

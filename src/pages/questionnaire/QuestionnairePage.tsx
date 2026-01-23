@@ -14,6 +14,7 @@ import { Question, StartingPointKey } from './types'
 
 // Data
 import questions from './data/questions.json'
+import QuestionnaireComplete from './components/QuestionnaireComplete';
 
 
 function QuestionnairePage() {
@@ -29,6 +30,9 @@ function QuestionnairePage() {
     );
   }
 
+  if (questionnaire.isComplete) {
+    return (<QuestionnaireComplete/>)
+  }
 
   return (
     <div className="questionnaire-page">

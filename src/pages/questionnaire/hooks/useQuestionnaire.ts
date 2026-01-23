@@ -8,9 +8,10 @@ const startingPoints = startingPointsImport as unknown as StartingPointsMap;
 
 export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
 
-    // Store answers and current question
+    // Store answers, current question
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("");
+    const [isComplete, setIsComplete] = useState(false);
 
     // Question history for progress bar and back button
     const [questionHistory, setQuestionHistory] = useState<string[]>([]);
@@ -59,6 +60,12 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
 
             // If next is a string return it, otherwise return it keyed with the answer
             if (typeof next === 'string') {
+
+                if( next === "end"){
+                    setIsComplete(true);
+                    return prevQuestionId;
+                }
+
                 return next;
             } else if (typeof next === 'object') {
                 return next[answer as keyof typeof next];
@@ -81,6 +88,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         answerCurrentQuestion,
         backToPreviousQuestion,
         answers,
-        progress
+        progress,
+        isComplete
     }
 }
