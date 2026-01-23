@@ -1,0 +1,30 @@
+{
+  "portfolio_1": {
+    "id": "portfolio_1",
+    "type": "yes_no",
+    "text": "Does an innovation portfolio of projects exist already at your company?",
+    "next": {
+      "yes": "portfolio_2",
+      "no": "portfolio_3"
+    }
+  },
+
+  "portfolio_2": {
+    "id": "portfolio_2",
+    "type": "text",
+    "text": "How many projects are currently in the innovation portfolio?",
+    "next": "portfolio_3"
+  },
+
+  "portfolio_3": {
+    "id": "portfolio_3",
+    "type": "multiple_choice",
+    "text": "Are projects recycled through stages or pivoted or killed?",
+    "options": [
+      { "value": "recycled", "label": "Recycled" },
+      { "value": "pivoted", "label": "Pivoted" },
+      { "value": "killed", "label": "Killed" }
+    ],
+    "next": "end"
+  }
+}

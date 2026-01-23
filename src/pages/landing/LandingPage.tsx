@@ -199,7 +199,7 @@ function LandingPage() {
 
             {/* Get Started Button */}
             <div className="get-started">
-                <button onClick={() => navigate("/signup")}>Get Started</button>
+                <button onClick={() => navigate("/questionnaire")}>Get Started</button>
             </div>
 
         </div>
