@@ -5,7 +5,14 @@ import TextQuestion from "./question-types/TextQuestion";
 import YesNoQuestion from "./question-types/YesNoQuestion";
 
 function QuestionRenderer({ question, onAnswer }: { question: Question, onAnswer: (answer: string) => void }) {
+
   const getQuestionComponent = () => {
+
+    if (!question) {
+      // prevent errors when question has not yet loaded
+      return;
+    }
+
     switch (question.type) {
       case "yes_no":
         return <YesNoQuestion question={question} onAnswer={onAnswer} />

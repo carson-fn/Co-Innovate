@@ -22,10 +22,10 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         setCurrentQuestionId(startingPoints[startingPointKey].startQuestionId);
     }, [startingPointKey]);
 
+    
+    if (!startingPointKey) { startingPointKey = "portfolio" };
 
     // Derive current question
-    if (!startingPointKey) { return null };
-
     const currentQuestion: Question = questions[currentQuestionId as keyof typeof questions] as Question;
 
     // Derive progress;
@@ -34,7 +34,6 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
 
     if (!currentQuestion) {
         if (currentQuestionId) console.warn('No question found for id:', currentQuestionId);
-        return null;
     }
 
     // Handle answering the question (passed down as a prop)
@@ -61,7 +60,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
             // If next is a string return it, otherwise return it keyed with the answer
             if (typeof next === 'string') {
 
-                if( next === "end"){
+                if (next === "end") {
                     setIsComplete(true);
                     return prevQuestionId;
                 }
