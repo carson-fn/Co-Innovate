@@ -7,6 +7,12 @@ function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAn
     // reset text box on question change
     useEffect(() => setAnswer(""), [question.id])
 
+    const submitTextInput = () => {
+        if (answer.trim() !== "") {
+            onAnswer("other: " + answer)
+        }
+    }
+
     return (
         <div>
             <h3 className="question-text">{question.text}</h3>
@@ -16,6 +22,7 @@ function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAn
                 className="text-input"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && submitTextInput()}
             ></input>
             <button className="answer-button" onClick={() => onAnswer(answer)}>Submit</button>
 

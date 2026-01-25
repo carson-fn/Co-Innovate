@@ -13,7 +13,7 @@ export type YesNoQuestion = QuestionBase & {
 
 export type MultipleChoiceQuestion = QuestionBase & {
   type: "multiple_choice";
-  options: { value: string; label: string }[];
+  options: { value: string; label: string; hasTextInput?: boolean }[];
   next: string | Record<string, string>;
 };
 

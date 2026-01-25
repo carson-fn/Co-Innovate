@@ -25,6 +25,32 @@
       { "value": "pivoted", "label": "Pivoted" },
       { "value": "killed", "label": "Killed" }
     ],
+    "next": "portfolio_4"
+  },
+
+  "portfolio_4": {
+    "id": "portfolio_4",
+    "type": "multiple_choice",
+    "text": "Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "c", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
+    "next": "portfolio_5"
+  },
+
+  "portfolio_5": {
+    "id": "portfolio_5",
+    "type": "multiple_choice",
+    "text": "#2 Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "c", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
     "next": "end"
   }
 }
