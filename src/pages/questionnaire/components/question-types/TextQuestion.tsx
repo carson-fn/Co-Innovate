@@ -9,7 +9,7 @@ function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAn
 
     const submitTextInput = () => {
         if (answer.trim() !== "") {
-            onAnswer("other: " + answer)
+            onAnswer(answer)
         }
     }
 

@@ -12,7 +12,7 @@ function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onA
 
     const submitTextInput = () => {
         if (answer.trim() !== "") {
-            onAnswer(answer)
+            onAnswer("Other: " + answer)
         }
     }
 
@@ -23,18 +23,15 @@ function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onA
                 {answerOptions.map((option) => {
                     if (option.hasTextInput) {
                         return (
-                            <div>
-
-                                <input
-                                    type="textbox"
-                                    key={option.value}
-                                    className="text-input"
-                                    value={answer}
-                                    placeholder={option.label}
-                                    onChange={(e) => setAnswer(e.target.value)}
-                                    onKeyDown={(e) => e.key === "Enter" && submitTextInput()}
-                                ></input>
-                            </div>
+                            <input
+                                type="textbox"
+                                key={option.value}
+                                className="text-input"
+                                value={answer}
+                                placeholder={option.label}
+                                onChange={(e) => setAnswer(e.target.value)}
+                                onKeyDown={(e) => e.key === "Enter" && submitTextInput()}
+                            ></input>
                         )
 
                     } else {

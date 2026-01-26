@@ -23,7 +23,7 @@ function QuestionnairePage() {
   const questionnaire = useQuestionnaire(startingPointKey);
 
   if (questionnaire.isComplete) {
-    return (<QuestionnaireComplete/>)
+    return (<QuestionnaireComplete answers={questionnaire.answers}/>)
   }
 
   return (
