@@ -1,4 +1,4 @@
-import React from 'react'
+// Types
 // import the type under a different name so it doesnt conflict with the component name
 import { YesNoQuestion as YNQType, OnAnswerFunction } from '../../types'
 

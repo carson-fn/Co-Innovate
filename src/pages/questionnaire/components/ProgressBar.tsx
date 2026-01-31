@@ -1,4 +1,4 @@
-import React from 'react'
+// Context
 import { useQuestionnaireContext } from '../context/QuestionnaireContext';
 
 function ProgressBar() {

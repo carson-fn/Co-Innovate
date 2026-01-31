@@ -1,6 +1,13 @@
+// Context
 import { useQuestionnaireContext } from "../context/QuestionnaireContext";
+
+// Styles
 import "../styles.css"
+
+// Types
 import { Question } from "../types";
+
+// Components
 import MultipleChoiceQuestion from "./question-types/MultipleChoiceQuestion";
 import TextQuestion from "./question-types/TextQuestion";
 import YesNoQuestion from "./question-types/YesNoQuestion";

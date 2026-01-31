@@ -1,4 +1,7 @@
+// Context
 import { useQuestionnaireContext } from "../context/QuestionnaireContext";
+
+// Components
 import QuestionnaireComplete from "./FinishedCard";
 import ProgressBar from "./ProgressBar";
 import QuestionRenderer from "./QuestionRenderer";

@@ -1,3 +1,4 @@
+// React
 import React, { useState } from 'react'
 
 function FinishedCard({answers}: {answers: Record<string, string>}) {

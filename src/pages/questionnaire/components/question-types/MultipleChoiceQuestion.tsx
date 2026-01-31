@@ -1,5 +1,7 @@
+// React
 import React, { useEffect } from 'react'
 
+// Types
 // import the type under a different name so it doesnt conflict with the component name
 import { MultipleChoiceQuestion as MCQType, OnAnswerFunction } from '../../types'
 
@@ -10,6 +12,7 @@ function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onA
     // reset text box on question change
     useEffect(() => setAnswer(""), [question.id])
 
+    // to submit the text input from the "other" option
     const submitTextInput = () => {
         if (answer.trim() !== "") {
             onAnswer("Other: " + answer)
@@ -21,7 +24,9 @@ function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onA
             <h3 className="question-text">{question.text}</h3>
             <div className="answer-group">
                 {answerOptions.map((option) => {
+                
                     if (option.hasTextInput) {
+                        // for "other" options where there is a text input
                         return (
                             <input
                                 type="textbox"
@@ -35,6 +40,7 @@ function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onA
                         )
 
                     } else {
+                        // regular multiple choice option
                         return (
                             <button className="answer-button" key={option.value} onClick={() => onAnswer(option.value)}>
                                 {option.label}

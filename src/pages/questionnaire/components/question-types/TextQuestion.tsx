@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+// React
+import { useEffect, useState } from 'react'
+
+// Types
 import { TextQuestion as TQType, OnAnswerFunction } from '../../types'
 
 function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAnswerFunction }) {

@@ -1,6 +1,10 @@
+// React
 import { useState, useEffect } from 'react';
 
+// Types
 import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
+
+// Data
 import startingPointsImport from '../data/startingPoints.json';
 import questions from '../data/questions.json';
 
