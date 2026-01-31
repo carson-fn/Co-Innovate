@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function QuestionnaireComplete({answers}: {answers: Record<string, string>}) {
+function FinishedCard({answers}: {answers: Record<string, string>}) {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,4 +41,4 @@ function QuestionnaireComplete({answers}: {answers: Record<string, string>}) {
 }
 
 
-export default QuestionnaireComplete
+export default FinishedCard

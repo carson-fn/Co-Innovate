@@ -1,11 +1,14 @@
+import { useQuestionnaireContext } from "../context/QuestionnaireContext";
 import "../styles.css"
 import { Question } from "../types";
 import MultipleChoiceQuestion from "./question-types/MultipleChoiceQuestion";
 import TextQuestion from "./question-types/TextQuestion";
 import YesNoQuestion from "./question-types/YesNoQuestion";
 
-function QuestionRenderer({ question, onAnswer }: { question: Question, onAnswer: (answer: string) => void }) {
+function QuestionRenderer() {
 
+  const { currentQuestion: question, answerCurrentQuestion: onAnswer }: { currentQuestion: Question, answerCurrentQuestion: (answer: string) => void } = useQuestionnaireContext();
+  
   const getQuestionComponent = () => {
 
     if (!question) {

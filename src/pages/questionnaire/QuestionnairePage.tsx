@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import { useState } from 'react'
 import "./styles.css"
 
 // Components
@@ -14,26 +14,20 @@ import { Question, StartingPointKey } from './types'
 
 // Data
 import questions from './data/questions.json'
-import QuestionnaireComplete from './components/QuestionnaireComplete';
+import QuestionnaireComplete from './components/FinishedCard';
+import { QuestionnaireProvider } from './context/QuestionnaireContext';
+import Content from './components/Content';
 
 
 function QuestionnairePage() {
 
-  const [startingPointKey, setStartingPointKey] = React.useState<StartingPointKey | null>("portfolio");
+  const [startingPointKey, setStartingPointKey] = useState<StartingPointKey>("portfolio");
   const questionnaire = useQuestionnaire(startingPointKey);
 
-  if (questionnaire.isComplete) {
-    return (<QuestionnaireComplete answers={questionnaire.answers}/>)
-  }
-
   return (
-    <div className="questionnaire-page">
-      <h1 className="question-text">Get Started</h1>
-      <p>Sometimes getting started is the hardest part, so let's make it a little bit easier. These 5 quick questions are your first step to get us on the right track.</p>
-      <ProgressBar progress={questionnaire.progress} />
-      <QuestionRenderer question={questionnaire.currentQuestion} onAnswer={questionnaire.answerCurrentQuestion} />
-      <button className="back-button" onClick={questionnaire.backToPreviousQuestion}>Back</button>
-    </div>
+    <QuestionnaireProvider startingPointKey={startingPointKey}>
+      <Content/>
+    </QuestionnaireProvider>
   )
 }
 
