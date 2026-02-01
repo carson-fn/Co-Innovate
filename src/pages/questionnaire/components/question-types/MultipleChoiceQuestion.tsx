@@ -10,13 +10,26 @@ import { MultipleChoiceQuestion as MCQType, OnAnswerFunction } from '../../types
 
 
 function MultipleChoiceQuestion({ question }: { question: MCQType }) {
-    
-    const { answerCurrentQuestion: onAnswer } = useQuestionnaireContext();
+
+    const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext();
     const answerOptions = question.options
     const [answer, setAnswer] = React.useState("")
 
-    // reset text box on question change
-    useEffect(() => setAnswer(""), [question.id])
+
+
+    // update text box on question change
+    useEffect(() => {
+
+        // if this question was already answered with the "other"/text option, show the previous answer on return
+        if (answers[question.id]?.startsWith("Other: ")) {
+            const previousAnswer = answers[question.id].substring(7) // remove "Other: " prefix
+            setAnswer(previousAnswer)
+        } else {
+            // otherwise reset the text box
+            setAnswer("")
+        }
+
+    }, [question.id])
 
     // to submit the text input from the "other" option
     const submitTextInput = () => {
@@ -30,7 +43,7 @@ function MultipleChoiceQuestion({ question }: { question: MCQType }) {
             <h3 className="question-text">{question.text}</h3>
             <div className="answer-group">
                 {answerOptions.map((option) => {
-                
+
                     if (option.hasTextInput) {
                         // for "other" options where there is a text input
                         return (

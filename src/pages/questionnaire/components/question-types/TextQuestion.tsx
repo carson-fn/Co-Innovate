@@ -9,12 +9,22 @@ import { TextQuestion as TQType, OnAnswerFunction } from '../../types'
 
 
 function TextQuestion({ question }: { question: TQType }) {
-    
-    const { answerCurrentQuestion: onAnswer } = useQuestionnaireContext()
+
+    const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext()
     const [answer, setAnswer] = useState("");
 
-    // reset text box on question change
-    useEffect(() => setAnswer(""), [question.id])
+    // update text box on question change
+    useEffect(() => {
+
+        // if this question was already answered, show the previous answer on return
+        if (answers[question.id]) {
+            setAnswer(answers[question.id])
+        } else {
+            // otherwise reset the text box
+            setAnswer("")
+        }
+
+    }, [question.id])
 
     const submitTextInput = () => {
         if (answer.trim() !== "") {
