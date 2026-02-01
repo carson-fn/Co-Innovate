@@ -15,6 +15,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
     // Store answers, current question
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("");
+    const [isFirstQuestion, setIsFirstQuestion] = useState<Boolean>(false);
     const [isComplete, setIsComplete] = useState(false);
 
     // Question history for progress bar and back button
@@ -25,6 +26,18 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         if (!startingPointKey) { return; }
         setCurrentQuestionId(startingPoints[startingPointKey].startQuestionId);
     }, [startingPointKey]);
+
+    
+    // update isFirstQuestion
+    useEffect(() => {
+        if (!startingPointKey) { return; }
+        if(currentQuestionId === startingPoints[startingPointKey].startQuestionId){
+            setIsFirstQuestion(true)
+        } else {
+            setIsFirstQuestion(false)
+        }
+    }, [currentQuestionId])
+
 
     
     if (!startingPointKey) { startingPointKey = "portfolio" };
@@ -92,6 +105,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         backToPreviousQuestion,
         answers,
         progress,
-        isComplete
+        isComplete,
+        isFirstQuestion
     }
 }
