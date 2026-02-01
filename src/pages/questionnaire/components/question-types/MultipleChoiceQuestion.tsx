@@ -1,11 +1,17 @@
 // React
 import React, { useEffect } from 'react'
 
+// Context
+import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
+
 // Types
 // import the type under a different name so it doesnt conflict with the component name
 import { MultipleChoiceQuestion as MCQType, OnAnswerFunction } from '../../types'
 
-function MultipleChoiceQuestion({ question, onAnswer }: { question: MCQType; onAnswer: OnAnswerFunction }) {
+
+function MultipleChoiceQuestion({ question }: { question: MCQType }) {
+    
+    const { answerCurrentQuestion: onAnswer } = useQuestionnaireContext();
     const answerOptions = question.options
     const [answer, setAnswer] = React.useState("")
 

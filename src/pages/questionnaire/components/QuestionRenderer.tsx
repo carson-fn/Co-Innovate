@@ -14,22 +14,22 @@ import YesNoQuestion from "./question-types/YesNoQuestion";
 
 function QuestionRenderer() {
 
-  const { currentQuestion: question, answerCurrentQuestion: onAnswer }: { currentQuestion: Question, answerCurrentQuestion: (answer: string) => void } = useQuestionnaireContext();
-  
+  const { currentQuestion }: { currentQuestion: Question } = useQuestionnaireContext();
+
   const getQuestionComponent = () => {
 
-    if (!question) {
+    if (!currentQuestion) {
       // prevent errors when question has not yet loaded
       return;
     }
 
-    switch (question.type) {
+    switch (currentQuestion.type) {
       case "yes_no":
-        return <YesNoQuestion question={question} onAnswer={onAnswer} />
+        return <YesNoQuestion question={currentQuestion} />
       case "multiple_choice":
-        return <MultipleChoiceQuestion question={question} onAnswer={onAnswer} />
+        return <MultipleChoiceQuestion question={currentQuestion} />
       case "text":
-        return <TextQuestion question={question} onAnswer={onAnswer} />
+        return <TextQuestion question={currentQuestion} />
       default:
         return <></>;
       // return (<div>Question type not supported: {question.type}</div>);

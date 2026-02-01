@@ -1,10 +1,16 @@
 // React
 import { useEffect, useState } from 'react'
 
+// Context
+import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
+
 // Types
 import { TextQuestion as TQType, OnAnswerFunction } from '../../types'
 
-function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAnswerFunction }) {
+
+function TextQuestion({ question }: { question: TQType }) {
+    
+    const { answerCurrentQuestion: onAnswer } = useQuestionnaireContext()
     const [answer, setAnswer] = useState("");
 
     // reset text box on question change
