@@ -53,7 +53,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         if (currentQuestionId) console.warn('No question found for id:', currentQuestionId);
     }
 
-    // Handle answering the question (passed down as a prop)
+    // Handle answering the question
     const answerCurrentQuestion: OnAnswerFunction = (answer: string): void => {
         if (!currentQuestion) {
             throw new Error('No current question');

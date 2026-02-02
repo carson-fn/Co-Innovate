@@ -6,7 +6,7 @@ import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
 
 // Types
 // import the type under a different name so it doesnt conflict with the component name
-import { MultipleChoiceQuestion as MCQType, OnAnswerFunction } from '../../types'
+import { MultipleChoiceQuestion as MCQType } from '../../types'
 
 
 function MultipleChoiceQuestion({ question }: { question: MCQType }) {

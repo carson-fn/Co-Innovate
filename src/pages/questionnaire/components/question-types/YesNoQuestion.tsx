@@ -3,7 +3,7 @@ import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
 
 // Types
 // import the type under a different name so it doesnt conflict with the component name
-import { YesNoQuestion as YNQType, OnAnswerFunction } from '../../types'
+import { YesNoQuestion as YNQType } from '../../types'
 
 
 function YesNoQuestion({ question }: { question: YNQType }) {
