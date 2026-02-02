@@ -51,6 +51,19 @@
       { "value": "c", "label": "Question" },
       { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
     ],
+    "next": "portfolio_6"
+  },
+
+  "portfolio_6": {
+    "id": "portfolio_6",
+    "type": "multiple_choice",
+    "text": "#3 Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "x", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
     "next": "end"
   }
 }

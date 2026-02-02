@@ -50,6 +50,22 @@
   transition: 0.15s ease;
 }
 
+.answer-button.highlighted {
+  background-color: #b8e0e1;
+  border-color: #80c0c2;
+}
+
+.answer-button ::highlight{
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #d0d5dd;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
 .answer-button:hover {
   background-color: rgb(189, 242, 243);
   border-color: #b8c0cc;

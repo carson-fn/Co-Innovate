@@ -14,16 +14,22 @@ function MultipleChoiceQuestion({ question }: { question: MCQType }) {
     const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext();
     const answerOptions = question.options
     const [answer, setAnswer] = React.useState("")
+    const [highlightedOption, setHighlightedOption] = React.useState<string | null>(null);
 
 
 
-    // update text box on question change
+    // update answers on question change
     useEffect(() => {
+        // reset text box and highlighted option
+        setAnswer("")
+        setHighlightedOption(null)
 
         // if this question was already answered with the "other"/text option, show the previous answer on return
         if (answers[question.id]?.startsWith("Other: ")) {
             const previousAnswer = answers[question.id].substring(7) // remove "Other: " prefix
             setAnswer(previousAnswer)
+        } else if (answers[question.id]) {
+            setHighlightedOption(answers[question.id])
         } else {
             // otherwise reset the text box
             setAnswer("")
@@ -61,7 +67,7 @@ function MultipleChoiceQuestion({ question }: { question: MCQType }) {
                     } else {
                         // regular multiple choice option
                         return (
-                            <button className="answer-button" key={option.value} onClick={() => onAnswer(option.value)}>
+                            <button className={"answer-button " + (highlightedOption === option.value ? "highlighted" : "")} key={option.value} onClick={() => onAnswer(option.value)}>
                                 {option.label}
                             </button>
                         )
