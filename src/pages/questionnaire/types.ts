@@ -35,7 +35,7 @@ export type StartingPoint = {
   estimatedNumberOfQuestions: number;
 };
 
-export type StartingPointKey = "culture" | "portfolio" | "project";
+export type StartingPointKey = "intake" | "portfolio";
 
 export type StartingPointsMap = Record<StartingPointKey, StartingPoint>;
 

@@ -19,7 +19,7 @@ import { StartingPointKey } from './types'
 
 function QuestionnairePage() {
 
-  const [startingPointKey, setStartingPointKey] = useState<StartingPointKey>("portfolio");
+  const [startingPointKey, setStartingPointKey] = useState<StartingPointKey>("intake");
 
   return (
     <QuestionnaireProvider startingPointKey={startingPointKey}>

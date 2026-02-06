@@ -1,69 +1,97 @@
 {
-  "portfolio_1": {
-    "id": "portfolio_1",
-    "type": "yes_no",
-    "text": "Does an innovation portfolio of projects exist already at your company?",
-    "next": {
-      "yes": "portfolio_2",
-      "no": "portfolio_3"
-    }
+  "intake_1": {
+    "id": "intake_1",
+    "type": "multiple_choice",
+    "text": "What result(s) do you want to achieve?",
+    "options": [
+      {
+        "value": "revenue",
+        "label": "Generate revenue (increase revenue, EBITDA, cash flow, or cost savings)"
+      },
+      {
+        "value": "culture",
+        "label": "Create a more innovative culture"
+      },
+      {
+        "value": "strategy",
+        "label": "Align with corporate strategy, goals, or KPIs"
+      },
+      {
+        "value": "idea",
+        "label": "I have a cool idea or project"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "intake_2"
   },
 
-  "portfolio_2": {
-    "id": "portfolio_2",
+  "intake_2": {
+    "id": "intake_2",
+    "type": "multiple_choice",
+    "text": "What are you working on right now as it relates to innovation?",
+    "options": [
+      {
+        "value": "ideas",
+        "label": "Generate more innovative ideas"
+      },
+      {
+        "value": "project",
+        "label": "Pitch or launch a pilot or project internally"
+      },
+      {
+        "value": "portfolio",
+        "label": "Build or evaluate an innovation portfolio of opportunities or projects"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "intake_3"
+  },
+
+  "intake_3": {
+    "id": "intake_3",
+    "type": "multiple_choice",
+    "text": "What prompted this action?",
+    "options": [
+      {
+        "value": "assigned",
+        "label": "I have been assigned this task or objective"
+      },
+      {
+        "value": "leadership",
+        "label": "I want to demonstrate innovative leadership and am trying something new"
+      },
+      {
+        "value": "curiosity",
+        "label": "I'm curious about innovation and want to learn more"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "intake_4"
+  },
+
+  "intake_4": {
+    "id": "intake_4",
     "type": "text",
-    "text": "How many projects are currently in the innovation portfolio?",
-    "next": "portfolio_3"
+    "text": "What about innovation are you most curious about?",
+    "next": "intake_5"
   },
 
-  "portfolio_3": {
-    "id": "portfolio_3",
-    "type": "multiple_choice",
-    "text": "Are projects recycled through stages or pivoted or killed?",
-    "options": [
-      { "value": "recycled", "label": "Recycled" },
-      { "value": "pivoted", "label": "Pivoted" },
-      { "value": "killed", "label": "Killed" }
-    ],
-    "next": "portfolio_4"
-  },
-
-  "portfolio_4": {
-    "id": "portfolio_4",
-    "type": "multiple_choice",
-    "text": "Multiple choice with 'Other' testing",
-    "options": [
-      { "value": "a", "label": "Very" },
-      { "value": "b", "label": "Good" },
-      { "value": "c", "label": "Question" },
-      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
-    ],
-    "next": "portfolio_5"
-  },
-
-  "portfolio_5": {
-    "id": "portfolio_5",
-    "type": "multiple_choice",
-    "text": "#2 Multiple choice with 'Other' testing",
-    "options": [
-      { "value": "a", "label": "Very" },
-      { "value": "b", "label": "Good" },
-      { "value": "c", "label": "Question" },
-      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
-    ],
-    "next": "portfolio_6"
-  },
-
-  "portfolio_6": {
-    "id": "portfolio_6",
-    "type": "multiple_choice",
-    "text": "#3 Multiple choice with 'Other' testing",
-    "options": [
-      { "value": "a", "label": "Very" },
-      { "value": "b", "label": "Good" },
-      { "value": "x", "label": "Question" },
-      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
-    ],
+  "intake_5": {
+    "id": "intake_5",
+    "type": "text",
+    "text": "What prompted you to reach out today?",
     "next": "end"
   }
 }
