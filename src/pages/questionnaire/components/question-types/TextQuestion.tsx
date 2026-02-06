@@ -13,6 +13,11 @@ function TextQuestion({ question }: { question: TQType }) {
     const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext()
     const [answer, setAnswer] = useState("");
 
+    const submitAnswer = (e: React.FormEvent) => {
+        e.preventDefault();
+        onAnswer(answer);
+    }
+
     // update text box on question change
     useEffect(() => {
 
@@ -29,7 +34,7 @@ function TextQuestion({ question }: { question: TQType }) {
     return (
         <div>
             <h3 className="question-text">{question.text}</h3>
-            <form onSubmit={()=>onAnswer(answer)}>
+            <form onSubmit={(e)=>submitAnswer(e)}>
             <input
                 type="textbox"
                 className="text-input"
