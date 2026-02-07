@@ -1,15 +1,18 @@
 // React
 import React, { useState } from 'react'
+import { useQuestionnaireContext } from '../context/QuestionnaireContext';
 
-function FinishedCard({answers}: {answers: Record<string, string>}) {
+function FinishedCard() {
   const [submitted, setSubmitted] = useState(false);
+
+  const { getAnswersAsFormattedString } = useQuestionnaireContext();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // TODO send email with answers to consultant team
-    
-    console.log("Questionnaire answers submitted:", answers);
+
+    console.log("Questionnaire answers submitted:\n", getAnswersAsFormattedString());
     setSubmitted(true);
   }
 
@@ -28,9 +31,9 @@ function FinishedCard({answers}: {answers: Record<string, string>}) {
                 Please enter your name and email so we can get back to you with the next steps. We are looking forward to working with you!
               </p>
               <form className="answer-group" onSubmit={handleSubmit}>
-                <input type="text" className="text-input" placeholder="Your Name" required={true}/>
-                <input type="email" className="text-input" placeholder="Your Email" required={true}/>
-              
+                <input type="text" className="text-input" placeholder="Your Name" required={true} />
+                <input type="email" className="text-input" placeholder="Your Email" required={true} />
+
                 <button className="answer-button">Submit</button>
               </form>
             </div>

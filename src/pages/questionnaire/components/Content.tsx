@@ -2,7 +2,7 @@
 import { useQuestionnaireContext } from "../context/QuestionnaireContext";
 
 // Components
-import QuestionnaireComplete from "./FinishedCard";
+import FinishedCard from "./FinishedCard";
 import ProgressBar from "./ProgressBar";
 import QuestionRenderer from "./QuestionRenderer";
 
@@ -11,7 +11,7 @@ function QuestionnaireContent() {
   const questionnaire = useQuestionnaireContext();
 
   if (questionnaire.isComplete) {
-    return <QuestionnaireComplete answers={questionnaire.answers} />;
+    return <FinishedCard/>;
   }
 
   return (

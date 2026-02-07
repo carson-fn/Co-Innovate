@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Types
-import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
+import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap, MultipleChoiceQuestion as MCQType } from '../types';
 
 // Data
 import startingPointsImport from '../data/startingPoints.json';
@@ -99,11 +99,26 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         });
     };
 
+
+    // formats answers into a string readable by non-technical users 
+    const getAnswersAsFormattedString = () => {
+        return Object.entries(answers).map(([questionId, answer]) => {
+            const question = questions[questionId as keyof typeof questions];
+
+            const formattedAnswer = 'options' in question ?
+                // for multiple choice questions, show the label instead of the value
+                question.options.find(option => option.value === answer)?.label || answer
+                : answer;
+            return `${question.text}:\n${formattedAnswer}`;
+        }).join('\n\n');
+    }
+
     return {
         currentQuestion,
         answerCurrentQuestion,
         backToPreviousQuestion,
         answers,
+        getAnswersAsFormattedString,
         progress,
         isComplete,
         isFirstQuestion
