@@ -38,6 +38,13 @@
   gap: 0.75rem;
 }
 
+.answer-group p {
+  font-size: 1rem;
+  color: #475467;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /* Buttons */
 .answer-button {
   padding: 1rem;
@@ -53,6 +60,11 @@
 .answer-button.highlighted {
   background-color: #b8e0e1;
   border-color: #80c0c2;
+}
+
+.answer-button.selected {
+  background-color: darkturquoise;
+  border-color: #40a0a3;
 }
 
 .answer-button ::highlight{

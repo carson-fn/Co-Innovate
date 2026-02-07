@@ -65,5 +65,65 @@
       { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
     ],
     "next": "end"
+  },
+
+  "msq_1": {
+    "id": "msq_1",
+    "type": "multi_select",
+    "text": "Which of the following areas are you interested in? (Select all that apply)",
+    "options": [
+      {
+        "value": "ideation",
+        "label": "Ideation"
+      },
+      {
+        "value": "prototyping",
+        "label": "Prototyping"
+      },
+      {
+        "value": "business_models",
+        "label": "Business Models"
+      },
+      {
+        "value": "culture",
+        "label": "Innovation Culture"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "msq_2"
+  },
+
+  "msq_2": {
+    "id": "msq_2",
+    "type": "multi_select",
+    "text": "Which of the following challenges are you facing? (Select all that apply)",
+    "options": [
+      {
+        "value": "resources",
+        "label": "Lack of resources (time, budget, people)"
+      },
+      {
+        "value": "ideas",
+        "label": "Not enough innovative ideas"
+      },
+      {
+        "value": "buy_in",
+        "label": "Getting buy-in from leadership or stakeholders"
+      },
+      {
+        "value": "execution",
+        "label": "Executing on innovation projects"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "end"
   }
 }

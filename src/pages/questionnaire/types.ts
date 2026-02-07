@@ -17,6 +17,12 @@ export type MultipleChoiceQuestion = QuestionBase & {
   next: string | Record<string, string>;
 };
 
+export type MultiSelectQuestion = QuestionBase & {
+  type: "multi_select";
+  options: { value: string; label: string; hasTextInput?: boolean }[];
+  next: string;
+};
+
 export type TextQuestion = QuestionBase & {
   type: "text";
   next: string;
@@ -25,6 +31,7 @@ export type TextQuestion = QuestionBase & {
 export type Question =
   | YesNoQuestion
   | MultipleChoiceQuestion
+  | MultiSelectQuestion
   | TextQuestion;
 
 

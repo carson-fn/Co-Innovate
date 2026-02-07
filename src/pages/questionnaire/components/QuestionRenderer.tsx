@@ -9,6 +9,7 @@ import { Question } from "../types";
 
 // Components
 import MultipleChoiceQuestion from "./question-types/MultipleChoiceQuestion";
+import MultiSelectQuestion from "./question-types/MultiSelectQuestion";
 import TextQuestion from "./question-types/TextQuestion";
 import YesNoQuestion from "./question-types/YesNoQuestion";
 
@@ -28,9 +29,12 @@ function QuestionRenderer() {
         return <YesNoQuestion question={currentQuestion} />
       case "multiple_choice":
         return <MultipleChoiceQuestion question={currentQuestion} />
+      case "multi_select":
+        return <MultiSelectQuestion question={currentQuestion} />
       case "text":
         return <TextQuestion question={currentQuestion} />
       default:
+        throw new Error("Unsupported question type for this question: " + currentQuestion);
         return <></>;
       // return (<div>Question type not supported: {question.type}</div>);
     }

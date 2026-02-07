@@ -1,7 +1,7 @@
 {
   "intake_1": {
     "id": "intake_1",
-    "type": "multiple_choice",
+    "type": "multi_select",
     "text": "What result(s) do you want to achieve?",
     "options": [
       {
