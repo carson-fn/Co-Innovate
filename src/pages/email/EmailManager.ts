@@ -24,3 +24,28 @@ export const sendQuestionnaireAnswers = (name: string, email: string, answers: s
             console.error("Error", error);
         });
 }
+
+export const sendContactForm = (name: string, email: string, subject: string, message: string) => {
+    const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID_CONTACT_FORM;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS env vars missing");
+    }   
+    
+    const templateParams = {
+        "name": name,
+        "email": email,
+        "subject": subject,
+        "message": message
+    };
+
+    emailjs.send(serviceId, templateId, templateParams, { publicKey: publicKey })
+        .then((response) => {
+            console.log("email sent", response);
+        })
+        .catch((error) => {
+            console.error("Error", error);
+        });
+}
