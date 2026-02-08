@@ -1,23 +1,44 @@
 // React
 import React, { useState } from 'react'
+
+// Context
 import { useQuestionnaireContext } from '../context/QuestionnaireContext';
+
+// Components
+import { sendQuestionnaireAnswers } from '../../email/EmailManager';
+
+type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
 function FinishedCard() {
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
+  const [submissionStatus, setSubmissionStatus] = useState<SubmissionStatus>('idle');
+  const buttonTextMap: Record<SubmissionStatus, string> = {
+    idle: 'Submit',
+    sending: 'Submitting...',
+    success: 'Submitted!',
+    error: 'Error Sending',
+  };
+
   const { getAnswersAsFormattedString } = useQuestionnaireContext();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // TODO send email with answers to consultant team
-
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Questionnaire answers submitted:\n", getAnswersAsFormattedString());
-    setSubmitted(true);
+    // send answers by email
+    setSubmissionStatus('sending');
+    sendQuestionnaireAnswers(name, email, getAnswersAsFormattedString())
+      .then(() => {
+        setSubmitted(true);
+        setSubmissionStatus('success');
+      })
+      .catch((error) => {
+        console.error("Error submitting questionnaire answers:", error);
+        setSubmissionStatus('error');
+      })
+      .finally(() => setTimeout(() => setSubmissionStatus('idle'), 3000));
   }
 
   return (
@@ -52,7 +73,9 @@ function FinishedCard() {
                   required={true} 
                 />
 
-                <button className="answer-button">Submit</button>
+                <button className="answer-button">
+                  {buttonTextMap[submissionStatus]}
+                </button>
               </form>
             </div>
           )
