@@ -4,6 +4,8 @@ import { useQuestionnaireContext } from '../context/QuestionnaireContext';
 
 function FinishedCard() {
   const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
   const { getAnswersAsFormattedString } = useQuestionnaireContext();
 
@@ -12,6 +14,8 @@ function FinishedCard() {
 
     // TODO send email with answers to consultant team
 
+    console.log("Name:", name);
+    console.log("Email:", email);
     console.log("Questionnaire answers submitted:\n", getAnswersAsFormattedString());
     setSubmitted(true);
   }
@@ -31,8 +35,22 @@ function FinishedCard() {
                 Please enter your name and email so we can get back to you with the next steps. We are looking forward to working with you!
               </p>
               <form className="answer-group" onSubmit={handleSubmit}>
-                <input type="text" className="text-input" placeholder="Your Name" required={true} />
-                <input type="email" className="text-input" placeholder="Your Email" required={true} />
+                <input 
+                  type="text" 
+                  className="text-input" 
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required={true} 
+                />
+                <input 
+                  type="email" 
+                  className="text-input" 
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required={true} 
+                />
 
                 <button className="answer-button">Submit</button>
               </form>
