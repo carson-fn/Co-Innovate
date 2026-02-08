@@ -1,19 +1,40 @@
+// Context
+import { useQuestionnaireContext } from "../context/QuestionnaireContext";
+
+// Styles
 import "../styles.css"
+
+// Types
 import { Question } from "../types";
+
+// Components
 import MultipleChoiceQuestion from "./question-types/MultipleChoiceQuestion";
+import MultiSelectQuestion from "./question-types/MultiSelectQuestion";
 import TextQuestion from "./question-types/TextQuestion";
 import YesNoQuestion from "./question-types/YesNoQuestion";
 
-function QuestionRenderer({ question, onAnswer }: { question: Question, onAnswer: (answer: string) => void }) {
+function QuestionRenderer() {
+
+  const { currentQuestion }: { currentQuestion: Question } = useQuestionnaireContext();
+
   const getQuestionComponent = () => {
-    switch (question.type) {
+
+    if (!currentQuestion) {
+      // prevent errors when question has not yet loaded
+      return;
+    }
+
+    switch (currentQuestion.type) {
       case "yes_no":
-        return <YesNoQuestion question={question} onAnswer={onAnswer} />
+        return <YesNoQuestion question={currentQuestion} />
       case "multiple_choice":
-        return <MultipleChoiceQuestion question={question} onAnswer={onAnswer} />
+        return <MultipleChoiceQuestion question={currentQuestion} />
+      case "multi_select":
+        return <MultiSelectQuestion question={currentQuestion} />
       case "text":
-        return <TextQuestion question={question} onAnswer={onAnswer} />
+        return <TextQuestion question={currentQuestion} />
       default:
+        throw new Error("Unsupported question type for this question: " + currentQuestion);
         return <></>;
       // return (<div>Question type not supported: {question.type}</div>);
     }

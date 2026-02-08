@@ -1,0 +1,129 @@
+{
+  "portfolio_1": {
+    "id": "portfolio_1",
+    "type": "yes_no",
+    "text": "Does an innovation portfolio of projects exist already at your company?",
+    "next": {
+      "yes": "portfolio_2",
+      "no": "portfolio_3"
+    }
+  },
+
+  "portfolio_2": {
+    "id": "portfolio_2",
+    "type": "text",
+    "text": "How many projects are currently in the innovation portfolio?",
+    "next": "portfolio_3"
+  },
+
+  "portfolio_3": {
+    "id": "portfolio_3",
+    "type": "multiple_choice",
+    "text": "Are projects recycled through stages or pivoted or killed?",
+    "options": [
+      { "value": "recycled", "label": "Recycled" },
+      { "value": "pivoted", "label": "Pivoted" },
+      { "value": "killed", "label": "Killed" }
+    ],
+    "next": "portfolio_4"
+  },
+
+  "portfolio_4": {
+    "id": "portfolio_4",
+    "type": "multiple_choice",
+    "text": "Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "c", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
+    "next": "portfolio_5"
+  },
+
+  "portfolio_5": {
+    "id": "portfolio_5",
+    "type": "multiple_choice",
+    "text": "#2 Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "c", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
+    "next": "portfolio_6"
+  },
+
+  "portfolio_6": {
+    "id": "portfolio_6",
+    "type": "multiple_choice",
+    "text": "#3 Multiple choice with 'Other' testing",
+    "options": [
+      { "value": "a", "label": "Very" },
+      { "value": "b", "label": "Good" },
+      { "value": "x", "label": "Question" },
+      { "value": "other", "label": "Something else... (please specify)", "hasTextInput": true }
+    ],
+    "next": "end"
+  },
+
+  "msq_1": {
+    "id": "msq_1",
+    "type": "multi_select",
+    "text": "Which of the following areas are you interested in? (Select all that apply)",
+    "options": [
+      {
+        "value": "ideation",
+        "label": "Ideation"
+      },
+      {
+        "value": "prototyping",
+        "label": "Prototyping"
+      },
+      {
+        "value": "business_models",
+        "label": "Business Models"
+      },
+      {
+        "value": "culture",
+        "label": "Innovation Culture"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "msq_2"
+  },
+
+  "msq_2": {
+    "id": "msq_2",
+    "type": "multi_select",
+    "text": "Which of the following challenges are you facing? (Select all that apply)",
+    "options": [
+      {
+        "value": "resources",
+        "label": "Lack of resources (time, budget, people)"
+      },
+      {
+        "value": "ideas",
+        "label": "Not enough innovative ideas"
+      },
+      {
+        "value": "buy_in",
+        "label": "Getting buy-in from leadership or stakeholders"
+      },
+      {
+        "value": "execution",
+        "label": "Executing on innovation projects"
+      },
+      {
+        "value": "other",
+        "label": "Something else (please specify)",
+        "hasTextInput": true
+      }
+    ],
+    "next": "end"
+  }
+}

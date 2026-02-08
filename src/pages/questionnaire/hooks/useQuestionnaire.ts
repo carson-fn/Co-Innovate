@@ -1,6 +1,10 @@
+// React
 import { useState, useEffect } from 'react';
 
-import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap } from '../types';
+// Types
+import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap, MultipleChoiceQuestion as MCQType } from '../types';
+
+// Data
 import startingPointsImport from '../data/startingPoints.json';
 import questions from '../data/questions.json';
 
@@ -11,6 +15,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
     // Store answers, current question
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [currentQuestionId, setCurrentQuestionId] = useState<string>("");
+    const [isFirstQuestion, setIsFirstQuestion] = useState<Boolean>(false);
     const [isComplete, setIsComplete] = useState(false);
 
     // Question history for progress bar and back button
@@ -22,10 +27,22 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         setCurrentQuestionId(startingPoints[startingPointKey].startQuestionId);
     }, [startingPointKey]);
 
+    
+    // update isFirstQuestion
+    useEffect(() => {
+        if (!startingPointKey) { return; }
+        if(currentQuestionId === startingPoints[startingPointKey].startQuestionId){
+            setIsFirstQuestion(true)
+        } else {
+            setIsFirstQuestion(false)
+        }
+    }, [currentQuestionId])
+
+
+    
+    if (!startingPointKey) { startingPointKey = "portfolio" };
 
     // Derive current question
-    if (!startingPointKey) { return null };
-
     const currentQuestion: Question = questions[currentQuestionId as keyof typeof questions] as Question;
 
     // Derive progress;
@@ -34,10 +51,9 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
 
     if (!currentQuestion) {
         if (currentQuestionId) console.warn('No question found for id:', currentQuestionId);
-        return null;
     }
 
-    // Handle answering the question (passed down as a prop)
+    // Handle answering the question
     const answerCurrentQuestion: OnAnswerFunction = (answer: string): void => {
         if (!currentQuestion) {
             throw new Error('No current question');
@@ -61,7 +77,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
             // If next is a string return it, otherwise return it keyed with the answer
             if (typeof next === 'string') {
 
-                if( next === "end"){
+                if (next === "end") {
                     setIsComplete(true);
                     return prevQuestionId;
                 }
@@ -83,12 +99,28 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         });
     };
 
+
+    // formats answers into a string readable by non-technical users 
+    const getAnswersAsFormattedString = () => {
+        return Object.entries(answers).map(([questionId, answer]) => {
+            const question = questions[questionId as keyof typeof questions];
+
+            const formattedAnswer = 'options' in question ?
+                // for multiple choice questions, show the label instead of the value
+                question.options.find(option => option.value === answer)?.label || answer
+                : answer;
+            return `${question.text}:\n${formattedAnswer}`;
+        }).join('\n\n');
+    }
+
     return {
         currentQuestion,
         answerCurrentQuestion,
         backToPreviousQuestion,
         answers,
+        getAnswersAsFormattedString,
         progress,
-        isComplete
+        isComplete,
+        isFirstQuestion
     }
 }

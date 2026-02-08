@@ -1,45 +1,30 @@
-import React, { use } from 'react'
+// React
+import { useState } from 'react'
+
+// Styles
 import "./styles.css"
 
 // Components
-import StartingPointSelector from './components/StartingPointSelector';
-import QuestionRenderer from './components/QuestionRenderer'
-import ProgressBar from './components/ProgressBar';
+import Content from './components/Content';
 
-// Hooks
-import { useQuestionnaire } from './hooks/useQuestionnaire';
+// Context
+import { QuestionnaireProvider } from './context/QuestionnaireContext';
 
 // Types
-import { Question, StartingPointKey } from './types'
+import { StartingPointKey } from './types'
 
-// Data
-import questions from './data/questions.json'
-import QuestionnaireComplete from './components/QuestionnaireComplete';
+
+
 
 
 function QuestionnairePage() {
-  const [startingPointKey, setStartingPointKey] = React.useState<StartingPointKey | null>(null);
 
-  const questionnaire = useQuestionnaire(startingPointKey);
-
-  if (!startingPointKey || !questionnaire) {
-    return (
-      <div className="questionnaire-page">
-        <StartingPointSelector onSelect={(key: StartingPointKey) => setStartingPointKey(key)} />
-      </div>
-    );
-  }
-
-  if (questionnaire.isComplete) {
-    return (<QuestionnaireComplete/>)
-  }
+  const [startingPointKey, setStartingPointKey] = useState<StartingPointKey>("intake");
 
   return (
-    <div className="questionnaire-page">
-      <ProgressBar progress={questionnaire.progress} />
-      <QuestionRenderer question={questionnaire.currentQuestion} onAnswer={questionnaire.answerCurrentQuestion} />
-      <button className="back-button" onClick={questionnaire.backToPreviousQuestion}>Back</button>
-    </div>
+    <QuestionnaireProvider startingPointKey={startingPointKey}>
+      <Content/>
+    </QuestionnaireProvider>
   )
 }
 

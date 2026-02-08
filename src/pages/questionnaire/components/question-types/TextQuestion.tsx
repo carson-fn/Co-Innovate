@@ -1,23 +1,49 @@
-import React, { useEffect, useState } from 'react'
-import { TextQuestion as TQType, OnAnswerFunction } from '../../types'
+// React
+import { useEffect, useState } from 'react'
 
-function TextQuestion({ question, onAnswer }: { question: TQType, onAnswer: OnAnswerFunction }) {
+// Context
+import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
+
+// Types
+import { TextQuestion as TQType } from '../../types'
+
+
+function TextQuestion({ question }: { question: TQType }) {
+
+    const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext()
     const [answer, setAnswer] = useState("");
 
-    // reset text box on question change
-    useEffect(() => setAnswer(""), [question.id])
+    const submitAnswer = (e: React.FormEvent) => {
+        e.preventDefault();
+        onAnswer(answer);
+    }
+
+    // update text box on question change
+    useEffect(() => {
+
+        // if this question was already answered, show the previous answer on return
+        if (answers[question.id]) {
+            setAnswer(answers[question.id])
+        } else {
+            // otherwise reset the text box
+            setAnswer("")
+        }
+
+    }, [question.id])
 
     return (
         <div>
             <h3 className="question-text">{question.text}</h3>
-
+            <form onSubmit={(e)=>submitAnswer(e)}>
             <input
                 type="textbox"
                 className="text-input"
+                required={true}
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
             ></input>
-            <button className="answer-button" onClick={() => onAnswer(answer)}>Submit</button>
+            <button className="answer-button" type="submit">Next</button>
+            </form>
 
         </div>
     )
