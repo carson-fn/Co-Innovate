@@ -1,6 +1,11 @@
 // React
 import React, { useState } from 'react'
+
+// Context
 import { useQuestionnaireContext } from '../context/QuestionnaireContext';
+
+// Components
+import { sendQuestionnaireAnswers } from '../../email/EmailManager';
 
 function FinishedCard() {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +17,8 @@ function FinishedCard() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // TODO send email with answers to consultant team
+    // send answers by email
+    sendQuestionnaireAnswers(name, email, getAnswersAsFormattedString());
 
     console.log("Name:", name);
     console.log("Email:", email);
