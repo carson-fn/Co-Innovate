@@ -21,7 +21,7 @@ function ContactPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    sendContactForm(formData.name, formData.email, formData.subject, formData.message)
+    sendContactForm(formData)
 
     console.log('Form submitted:', formData)
     // Reset form
