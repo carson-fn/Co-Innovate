@@ -47,7 +47,7 @@ function LandingPage() {
                 <ul>
                     <li>Innovation activity without a clear business impact</li>
                     <li>Pilots and technology trials that struggle to scale</li>
-                    <li>Confusion about what “innovation” actually means</li>
+                    <li>Confusion about what "innovation" actually means</li>
                     <li>Teams stretched thin, unsure how to prioritize or execute</li>
                     <li>Culture initiatives that don't change how work gets done</li>
                 </ul>
@@ -211,21 +211,35 @@ function LandingPage() {
             <hr />
 
             {/* Get Started */}
-            <div className="section">
+            <div className="section get-started-section">
                 <h2>Get Started</h2>
-                <p>Ready to make innovation work inside your organization?</p>
-                <p>Start with our 5-question form.</p>
-                <p><a href="/questionnaire">Link to survey</a></p>
+                <p className="get-started-lead">
+                    Ready to make innovation work inside your organization?
+                </p>
+                <p className="get-started-sublead">Choose your next step:</p>
 
-                <p>Book a consultation</p>
-                <p><a href="#">Calendly link</a></p>
+                <div className="get-started-actions">
+                    <a className="cta-btn cta-primary" href="/questionnaire">
+                        Start 5-Question Form
+                    </a>
+                    <a
+                        className="cta-btn cta-secondary"
+                        href="https://calendly.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Book a Consultation
+                    </a>
+                    <a className="cta-btn cta-ghost" href="/contact">
+                        Contact Us
+                    </a>
+                </div>
 
-                <p>Or contact us to discuss your growth objectives.</p>
-                <p><a href="/contact">Contact form</a></p>
-
-                <p><strong>Carrie Fanai, P.Eng</strong></p>
-                <p>carrie@co-innovate.ca</p>
-                <p>www.co-innovate.ca</p>
+                <div className="get-started-contact">
+                    <p><strong>Carrie Fanai, P.Eng</strong></p>
+                    <p>carrie@co-innovate.ca</p>
+                    <p>www.co-innovate.ca</p>
+                </div>
             </div>
 
             {/* Second logo banner */}
