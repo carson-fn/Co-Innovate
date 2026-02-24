@@ -6,6 +6,7 @@ import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
 
 // Types
 import { TextQuestion as TQType } from '../../types'
+import NextButton from './NextButton';
 
 
 function TextQuestion({ question }: { question: TQType }) {
@@ -15,9 +16,10 @@ function TextQuestion({ question }: { question: TQType }) {
 
     const hasAnswer = answer.trim() !== "";
 
-    const submitAnswer = (e: React.FormEvent) => {
-        e.preventDefault();
-        onAnswer(answer);
+    const submitAnswer = () => {
+        if (hasAnswer) {
+            onAnswer(answer);
+        }
     }
 
     // update text box on question change
@@ -36,17 +38,21 @@ function TextQuestion({ question }: { question: TQType }) {
     return (
         <div>
             <h3 className="question-text">{question.text}</h3>
-            <form onSubmit={(e)=>submitAnswer(e)}>
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                submitAnswer();
+            }}>
             <input
                 type="textbox"
                 className="text-input"
-                required={true}
+                // required={true}
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
             ></input>
-            <button className="answer-button" type="submit" disabled={!hasAnswer}>Next</button>
+            
+            {/* <button className="answer-button" type="submit" disabled={!hasAnswer}>Next</button> */}
             </form>
-
+            <NextButton canSubmit={hasAnswer} onSubmit={submitAnswer} cantSubmitMessage="Please enter an answer" />
         </div>
     )
 }

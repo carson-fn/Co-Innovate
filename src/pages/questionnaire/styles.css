@@ -101,8 +101,19 @@
   display: inline-block;
 }
 
+.submit-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
 .submit-hint {
-  margin-top: 0.5rem;
+  position: absolute;
+  left: calc(100% + 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  margin-top: 0;
   margin-bottom: 0;
   font-size: 0.95rem;
   color: #6b7280;

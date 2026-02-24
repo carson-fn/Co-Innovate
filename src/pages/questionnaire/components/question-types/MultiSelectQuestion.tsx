@@ -5,6 +5,7 @@ import { useQuestionnaireContext } from '../../context/QuestionnaireContext'
 
 // Types
 import { MultiSelectQuestion as MSQType } from '../../types'
+import NextButton from './NextButton'
 
 
 
@@ -15,15 +16,12 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
 
     const [selectedAnswers, setSelectedAnswers] = React.useState<string[]>([])
     const [otherText, setOtherText] = React.useState("")
-    const [showSubmitHint, setShowSubmitHint] = React.useState(false)
-
     const hasSelection = selectedAnswers.length > 0 || otherText.trim() !== ''
 
     // update answers on question change
     useEffect(() => {
         setSelectedAnswers([])
         setOtherText("")
-        setShowSubmitHint(false)
 
         // check if this question was already answered
         const previousAnswers = answers[question.id]
@@ -51,7 +49,6 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
 
     // helper function to add/remove options from selectedAnswers
     const toggleOption = (value: string) => {
-        setShowSubmitHint(false)
         setSelectedAnswers(prev => prev.includes(value) ? prev.filter(v => v !== value) : [...prev, value])
     }
 
@@ -75,18 +72,6 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
         onAnswer(toBeSubmitted.join('; '))
     }
 
-    const handleSubmitClick = () => {
-        if (!hasSelection) {
-            setShowSubmitHint(true)
-            return
-        }
-
-        setShowSubmitHint(false)
-        submitAnswers()
-    }
-
-
-
     return (
         <div>
             <h3 className="question-text">{question.text}</h3>
@@ -103,14 +88,13 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
                                 className="text-input"
                                 value={otherText}
                                 placeholder={option.label}
-                                onChange={(e) => {
-                                    setShowSubmitHint(false)
-                                    setOtherText(e.target.value)
-                                }}
+                                onChange={(e) => setOtherText(e.target.value)}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
                                         e.preventDefault()
-                                        handleSubmitClick()
+                                        if (hasSelection) {
+                                            submitAnswers()
+                                        }
                                     }
                                 }}
                             />
@@ -130,18 +114,7 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
                 })}
             </div>
 
-            <div className="submit-container">
-                <span className="submit-tooltip-wrap" title={!hasSelection ? "Please select an answer" : undefined}>
-                    <button
-                        className={"answer-button " + (!hasSelection ? "is-disabled" : "")}
-                        onClick={handleSubmitClick}
-                        aria-disabled={!hasSelection}
-                    >
-                        Next
-                    </button>
-                </span>
-                {showSubmitHint ? <p className="submit-hint">Please select an answer.</p> : null}
-            </div>
+            <NextButton canSubmit={hasSelection} onSubmit={submitAnswers} />
         </div>
     )
 
