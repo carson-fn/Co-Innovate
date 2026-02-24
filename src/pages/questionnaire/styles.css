@@ -49,6 +49,7 @@
 .answer-button {
   padding: 1rem;
   font-size: 1rem;
+  color: #1f2937;
   text-align: center;
   border-radius: 6px;
   border: 1px solid #d0d5dd;
@@ -60,37 +61,33 @@
 .answer-button.highlighted {
   background-color: #b8e0e1;
   border-color: #80c0c2;
+  color: #1f2937;
 }
 
 .answer-button.selected {
   background-color: darkturquoise;
   border-color: #40a0a3;
+  color: #1f2937;
 }
 
-.answer-button ::highlight{
-  padding: 1rem;
-  font-size: 1rem;
-  text-align: center;
-  border-radius: 6px;
-  border: 1px solid #d0d5dd;
-  background-color: #fff;
-  cursor: pointer;
-  transition: 0.15s ease;
-}
-
-.answer-button:hover {
-  background-color: rgb(189, 242, 243);
-  border-color: #b8c0cc;
+@media (hover: hover) and (pointer: fine) {
+  .answer-button:hover {
+    background-color: rgb(189, 242, 243);
+    border-color: #b8c0cc;
+    color: #1f2937;
+  }
 }
 
 .answer-button:active {
   background-color: darkturquoise;
+  color: #1f2937;
 }
 
 .back-button {
   margin-top: 2rem;
   padding: 1rem 2rem;
   font-size: 1rem;
+  color: #1f2937;
   border-radius: 6px;
   border: 1px solid #d0d5dd;
   background-color: #f0f0f0;
