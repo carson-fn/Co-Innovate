@@ -7,11 +7,11 @@ function GetStartedSection() {
 
       <div className="get-started-actions">
         <a className="cta-btn cta-primary" href="/questionnaire">
-          Start 5-Question Form
+          Get Started
         </a>
-        <a className="cta-btn cta-secondary" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
+        {/* <a className="cta-btn cta-secondary" href="https://calendly.com/" target="_blank" rel="noopener noreferrer">
           Book a Consultation
-        </a>
+        </a> */}
         <a className="cta-btn cta-ghost" href="/contact">
           Contact Us
         </a>
@@ -21,8 +21,11 @@ function GetStartedSection() {
         <p>
           <strong>Carrie Fanai, P.Eng</strong>
         </p>
-        <p>carrie@co-innovate.ca</p>
-        <p>www.co-innovate.ca</p>
+        <p>
+        <a className="get-started-link" href="mailto:carrie@co-innovate.ca">carrie@co-innovate.ca</a> <br/>
+        <a className="get-started-link" href="https://www.co-innovate.ca">www.co-innovate.ca</a> <br/>
+        <a className="get-started-link" href="tel:403-807-5835">403-807-5835</a>
+        </p>
       </div>
     </div>
   );
