@@ -13,6 +13,8 @@ function TextQuestion({ question }: { question: TQType }) {
     const { answerCurrentQuestion: onAnswer, answers } = useQuestionnaireContext()
     const [answer, setAnswer] = useState("");
 
+    const hasAnswer = answer.trim() !== "";
+
     const submitAnswer = (e: React.FormEvent) => {
         e.preventDefault();
         onAnswer(answer);
@@ -42,7 +44,7 @@ function TextQuestion({ question }: { question: TQType }) {
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
             ></input>
-            <button className="answer-button" type="submit">Next</button>
+            <button className="answer-button" type="submit" disabled={!hasAnswer}>Next</button>
             </form>
 
         </div>

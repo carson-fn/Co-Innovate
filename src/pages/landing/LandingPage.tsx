@@ -8,7 +8,6 @@ import banner2 from "../../assets/banners/banner2.png";
 import FounderSection from "./components/FounderSection";
 import FloatingGetStartedButton from "./components/FloatingGetStartedButton";
 import GetStartedSection from "./components/GetStartedSection";
-import OfferingsSection from "./components/OfferingsSection";
 
 function LandingPage() {
     return (

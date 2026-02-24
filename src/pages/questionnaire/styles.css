@@ -70,6 +70,20 @@
   color: #1f2937;
 }
 
+.answer-button:disabled {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.answer-button.is-disabled {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .answer-button:hover {
     background-color: rgb(189, 242, 243);
@@ -81,6 +95,17 @@
 .answer-button:active {
   background-color: darkturquoise;
   color: #1f2937;
+}
+
+.submit-tooltip-wrap {
+  display: inline-block;
+}
+
+.submit-hint {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  color: #6b7280;
 }
 
 .back-button {
