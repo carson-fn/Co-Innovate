@@ -1,6 +1,10 @@
-import React from 'react'
+// Context
+import { useQuestionnaireContext } from '../context/QuestionnaireContext';
 
-function ProgressBar({ progress }: {progress: number}) {
+function ProgressBar() {
+  
+  const { progress } = useQuestionnaireContext();
+
   return (
     <div className="progress-container">
       <div className="progress-bar">

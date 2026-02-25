@@ -1,5 +1,7 @@
-import React from 'react'
+// Types
 import { StartingPoint, StartingPointKey, StartingPointsMap } from '../types'
+
+// Data
 import startingPointsImport from '../data/startingPoints.json';
 
 const startingPoints = startingPointsImport as StartingPointsMap

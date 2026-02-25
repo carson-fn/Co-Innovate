@@ -13,8 +13,14 @@ export type YesNoQuestion = QuestionBase & {
 
 export type MultipleChoiceQuestion = QuestionBase & {
   type: "multiple_choice";
-  options: { value: string; label: string }[];
+  options: { value: string; label: string; hasTextInput?: boolean }[];
   next: string | Record<string, string>;
+};
+
+export type MultiSelectQuestion = QuestionBase & {
+  type: "multi_select";
+  options: { value: string; label: string; hasTextInput?: boolean }[];
+  next: string;
 };
 
 export type TextQuestion = QuestionBase & {
@@ -25,6 +31,7 @@ export type TextQuestion = QuestionBase & {
 export type Question =
   | YesNoQuestion
   | MultipleChoiceQuestion
+  | MultiSelectQuestion
   | TextQuestion;
 
 
@@ -35,7 +42,7 @@ export type StartingPoint = {
   estimatedNumberOfQuestions: number;
 };
 
-export type StartingPointKey = "culture" | "portfolio" | "project";
+export type StartingPointKey = "intake" | "portfolio";
 
 export type StartingPointsMap = Record<StartingPointKey, StartingPoint>;
 
