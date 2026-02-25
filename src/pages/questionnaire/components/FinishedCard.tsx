@@ -59,7 +59,7 @@ function FinishedCard() {
                 Your responses have been recorded. We will get back to you with the next steps.
               </p>
               <div className='answer-group'>
-                <button className="answer-button" onClick={() => navigate('/')}>Return</button>
+                <button className="answer-button" onClick={() => navigate('/')}>Back</button>
               </div>
             </>
           ) : (

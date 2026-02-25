@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './styles.css'
 import { sendContactForm } from '../email/EmailManager'
 
 type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
 function ContactPage() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -100,7 +103,11 @@ function ContactPage() {
                 <button type="submit" className="submit-btn">
                     {buttonTextMap[submissionStatus]}
                 </button>
+
+                <button type="button" className="submit-btn" onClick={() => navigate("/")}>Back</button>
             </form>
+
+            
         </div>
     )
 }
