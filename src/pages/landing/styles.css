@@ -202,11 +202,17 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  border: none;
   border-radius: 999px;
   padding: 0.75rem 1.1rem;
   font-size: 1rem;
   font-weight: 600;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.cta-btn:focus,
+.get-started .get-started-cta:focus {
+  outline: none;
 }
 
 .cta-btn:hover {

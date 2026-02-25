@@ -58,6 +58,10 @@
   transition: 0.15s ease;
 }
 
+.answer-button.wide {
+  width: 100%;
+}
+
 .answer-button.highlighted {
   background-color: #b8e0e1;
   border-color: #80c0c2;

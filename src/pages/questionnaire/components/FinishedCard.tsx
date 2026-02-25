@@ -1,6 +1,6 @@
 // React
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Context
 import { useQuestionnaireContext } from '../context/QuestionnaireContext';
@@ -11,7 +11,6 @@ import { sendQuestionnaireAnswers } from '../../email/EmailManager';
 type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
 function FinishedCard() {
-  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -59,7 +58,9 @@ function FinishedCard() {
                 Your responses have been recorded. We will get back to you with the next steps.
               </p>
               <div className='answer-group'>
-                <button className="answer-button" onClick={() => navigate('/')}>Back</button>
+                <Link to="/">
+                  <button className="answer-button wide">Back</button>
+                </Link>
               </div>
             </>
           ) : (

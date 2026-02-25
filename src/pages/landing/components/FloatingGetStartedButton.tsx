@@ -1,11 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function FloatingGetStartedButton() {
-  const navigate = useNavigate();
 
   return (
     <div className="get-started">
-      <button onClick={() => navigate("/questionnaire")}>Get Started</button>
+      <Link to="/questionnaire">
+        <button>Get Started</button>
+      </Link>
     </div>
   );
 }
