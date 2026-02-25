@@ -33,7 +33,7 @@ function TextQuestion({ question }: { question: TQType }) {
             setAnswer("")
         }
 
-    }, [question.id])
+    }, [question.id, answers])
 
     return (
         <div>

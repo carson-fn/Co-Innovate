@@ -35,7 +35,6 @@ function QuestionRenderer() {
         return <TextQuestion question={currentQuestion} />
       default:
         throw new Error("Unsupported question type for this question: " + currentQuestion);
-        return <></>;
       // return (<div>Question type not supported: {question.type}</div>);
     }
   }

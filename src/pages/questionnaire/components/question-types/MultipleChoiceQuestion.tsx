@@ -35,7 +35,7 @@ function MultipleChoiceQuestion({ question }: { question: MCQType }) {
             setAnswer("")
         }
 
-    }, [question.id])
+    }, [question.id, answers])
 
     // to submit the text input from the "other" option
     const submitTextInput = () => {

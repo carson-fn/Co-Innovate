@@ -24,7 +24,7 @@ function YesNoQuestion({ question }: { question: YNQType }) {
               setHighlightedOption(answers[question.id])
           }
   
-      }, [question.id])
+      }, [question.id, answers])
 
   return (
     <div>

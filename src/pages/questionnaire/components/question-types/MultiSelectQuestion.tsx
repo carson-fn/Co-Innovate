@@ -47,7 +47,7 @@ function MultiSelectQuestion({ question }: { question: MSQType }) {
             setSelectedAnswers(selected)
         }
 
-    }, [question.id])
+    }, [question.id, answers])
 
     // helper function to add/remove options from selectedAnswers
     const toggleOption = (value: string) => {

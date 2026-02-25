@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 // Types
-import { OnAnswerFunction, Question, StartingPoint, StartingPointKey, StartingPointsMap, MultipleChoiceQuestion as MCQType } from '../types';
+import { OnAnswerFunction, Question, StartingPointKey, StartingPointsMap } from '../types';
 
 // Data
 import startingPointsImport from '../data/startingPoints.json';
@@ -36,7 +36,7 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
         } else {
             setIsFirstQuestion(false)
         }
-    }, [currentQuestionId])
+    }, [currentQuestionId, startingPointKey])
 
 
     
