@@ -100,15 +100,33 @@ export function useQuestionnaire(startingPointKey: StartingPointKey | null) {
     };
 
 
+    const OTHER_PREFIX = "Other: ";
+
     // formats answers into a string readable by non-technical users 
     const getAnswersAsFormattedString = () => {
         return Object.entries(answers).map(([questionId, answer]) => {
             const question = questions[questionId as keyof typeof questions];
+            if (!question) return '';
 
-            const formattedAnswer = 'options' in question ?
-                // for multiple choice questions, show the label instead of the value
-                question.options.find(option => option.value === answer)?.label || answer
-                : answer;
+            let formattedAnswer = answer;
+            if ((question.type === 'multi_select' || question.type === 'multiple_choice') && 'options' in question && typeof answer === 'string') {
+                if (question.type === 'multi_select') {
+                    formattedAnswer = answer
+                        .split(';')
+                        .map((value: string) => value.trim())
+                        .filter((value: string) => Boolean(value))
+                        .map((value: string) => {
+                            if (value.toLowerCase().startsWith(OTHER_PREFIX.toLowerCase())) {
+                                return value;
+                            }
+                            return question.options.find(option => option.value === value)?.label || value;
+                        })
+                        .join('; ');
+                } else {
+                    // for multiple choice questions, show the label instead of the value
+                    formattedAnswer = question.options.find(option => option.value === answer)?.label || answer;
+                }
+            }
             return `${question.text}:\n${formattedAnswer}`;
         }).join('\n\n');
     }
