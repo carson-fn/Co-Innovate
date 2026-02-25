@@ -27,6 +27,11 @@ function FinishedCard() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // prevent submitting again
+    if (submissionStatus === 'sending') {
+      return; 
+    }
+
     // send answers by email
     setSubmissionStatus('sending');
     sendQuestionnaireAnswers(name, email, getAnswersAsFormattedString())
