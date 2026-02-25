@@ -1,5 +1,6 @@
 // React
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 // Context
 import { useQuestionnaireContext } from '../context/QuestionnaireContext';
@@ -10,6 +11,7 @@ import { sendQuestionnaireAnswers } from '../../email/EmailManager';
 type SubmissionStatus = 'idle' | 'sending' | 'success' | 'error';
 
 function FinishedCard() {
+  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,7 +31,7 @@ function FinishedCard() {
 
     // prevent submitting again
     if (submissionStatus === 'sending') {
-      return; 
+      return;
     }
 
     // send answers by email
@@ -52,30 +54,35 @@ function FinishedCard() {
         <h1 className="complete-title">Thanks for taking the questionnaire!</h1>
         {submitted ?
           (
-            <p className="complete-text">
-              Your responses have been recorded. We will get back to you with the next steps.
-            </p>
+            <>
+              <p className="complete-text">
+                Your responses have been recorded. We will get back to you with the next steps.
+              </p>
+              <div className='answer-group'>
+                <button className="answer-button" onClick={() => navigate('/')}>Return</button>
+              </div>
+            </>
           ) : (
             <div>
               <p className="complete-text">
                 Please enter your name and email so we can get back to you with the next steps. We are looking forward to working with you!
               </p>
               <form className="answer-group" onSubmit={handleSubmit}>
-                <input 
-                  type="text" 
-                  className="text-input" 
+                <input
+                  type="text"
+                  className="text-input"
                   placeholder="Your Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  required={true} 
+                  required={true}
                 />
-                <input 
-                  type="email" 
-                  className="text-input" 
+                <input
+                  type="email"
+                  className="text-input"
                   placeholder="Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  required={true} 
+                  required={true}
                 />
 
                 <button className="answer-button">
